@@ -4,6 +4,6 @@ node {
     }
 
     stage('Build image') {
-        def jenkinsImage = docker.build 'dimasmith/jenkins:latest', dir: 'docker'
+        sh 'docker build --tag jenkins-docker:latest ./docker'
     }
 }
