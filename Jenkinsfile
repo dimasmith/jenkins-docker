@@ -3,7 +3,14 @@ node {
         checkout scm
     }
 
+    def jenkinsImage
     stage('Build image') {
-        def jenkinsImage = docker.build 'dimasmith/jenkins:latest', dir: 'docker'
+        jenkinsImage = docker.build('dimasmith/jenkins-docker', './docker')
+    }
+
+    stage('Publish image') {
+        withDockerRegistry([credentialsId: 'dimasmith-docker']) {
+            jenkinsImage.push('latest')
+        }
     }
 }
