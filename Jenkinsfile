@@ -9,6 +9,8 @@ node {
     }
 
     stage('Publish image') {
-        jenkinsImage.push()
+        withDockerRegistry([credentialsId: 'dimasmith-docker']) {
+            jenkinsImage.push()
+        }
     }
 }
