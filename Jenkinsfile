@@ -4,6 +4,6 @@ node {
     }
 
     stage('Build image') {
-        sh 'docker build --tag jenkins-docker:latest ./docker'
+        def jenkinsImage = docker.build('jenkins-docker:latest', './docker')
     }
 }
