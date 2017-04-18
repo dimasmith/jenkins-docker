@@ -8,9 +8,11 @@ node {
         jenkinsImage = docker.build('dimasmith/jenkins-docker', './docker')
     }
 
-    stage('Publish image') {
-        withDockerRegistry([credentialsId: 'dimasmith-docker']) {
-            jenkinsImage.push('latest')
+    if (env.BRANCH_NAME == 'master') {
+        stage('Publish image') {
+            withDockerRegistry([credentialsId: 'dimasmith-docker']) {
+                jenkinsImage.push('latest')
+            }
         }
     }
 }
