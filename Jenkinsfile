@@ -3,7 +3,12 @@ node {
         checkout scm
     }
 
+    def jenkinsImage
     stage('Build image') {
-        def jenkinsImage = docker.build('jenkins-docker:latest', './docker')
+        jenkinsImage = docker.build('jenkins-docker:latest', './docker')
+    }
+
+    stage('Publish image') {
+        jenkinsImage.push()
     }
 }
