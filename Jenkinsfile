@@ -5,12 +5,12 @@ node {
 
     def jenkinsImage
     stage('Build image') {
-        jenkinsImage = docker.build('jenkins-docker:latest', './docker')
+        jenkinsImage = docker.build('dimasmith/jenkins-docker', './docker')
     }
 
     stage('Publish image') {
         withDockerRegistry([credentialsId: 'dimasmith-docker']) {
-            jenkinsImage.push()
+            jenkinsImage.push('latest')
         }
     }
 }
