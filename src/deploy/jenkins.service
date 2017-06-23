@@ -4,9 +4,10 @@ After=docker.service
 Requires=docker.service
 
 [Service]
-ExecStartPre=-/usr/bin/docker-compose -f /opt/jenkins/docker-compose.yml down  
-ExecStart=-/usr/bin/docker-compose -f /opt/jenkins/docker-compose.yml up
-ExecStop=-/usr/bin/docker-compose -f /opt/jenkins/docker-compose.yml stop
+ExecStartPre=-/usr/bin/docker-compose -f /opt/jenkins/docker-compose.yml pull  
+ExecStartPre=/usr/bin/docker-compose -f /opt/jenkins/docker-compose.yml down  
+ExecStart=/usr/bin/docker-compose -f /opt/jenkins/docker-compose.yml up
+ExecStop=/usr/bin/docker-compose -f /opt/jenkins/docker-compose.yml stop
 
 [Install]
 WantedBy=multi-user.target  
