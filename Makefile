@@ -1,7 +1,7 @@
 VERSION=$(shell cat jenkins-version)
 IMAGE=dimasmith/jenkins-docker
 
-SRC=docker
+SRC=src
 BUILD=build
 
 build: compile
