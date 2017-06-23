@@ -1,0 +1,13 @@
+version: '2'
+services:
+  jenkins:
+    image: dimasmith/jenkins-docker:latest
+    ports:
+      - "8080:8080"
+    environment:
+      JAVA_OPTS: "-Xmx2G"
+    volumes:
+      - "jenkins:/var/jenkins_home"
+
+volumes:
+  jenkins:
