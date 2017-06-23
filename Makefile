@@ -1,6 +1,7 @@
 VERSION=$(shell cat jenkins-version)
 IMAGE=dimasmith/jenkins-docker
 
+SRC=docker
 BUILD=build
 
 build: compile
@@ -17,7 +18,7 @@ version:
 
 compile:
 	mkdir -p $(BUILD)
-	sed -e 's/_version_/$(VERSION)/g' docker/Dockerfile > $(BUILD)/Dockerfile
+	sed -e 's/_version_/$(VERSION)/g' $(SRC)/Dockerfile > $(BUILD)/Dockerfile
 
 clean:
 	rm -rf $(BUILD)
