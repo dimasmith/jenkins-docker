@@ -8,6 +8,7 @@ services:
       JAVA_OPTS: "-Xmx2G"
     volumes:
       - "jenkins:/var/jenkins_home"
+      - "/var/run/docker.sock:/var/run/docker.sock"
 
 volumes:
   jenkins:
